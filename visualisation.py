@@ -31,10 +31,29 @@ def lineplot(data_ele , country):
     plt.show() 
     return #return statement is used to end tht execution of the function
 
+"""Creating a pie chart to show the population that cannot afford a healthy diet"""
+
+def piechart(data_gpc):
+    data_2 = data_gpc #data_fpr is stored in new variable
+    print(data_2) #printing data_2
+    plt.figure()
+    #plotting pie chart by setting Transaction amount and Merchant name
+    plt.pie(data_2["Transaction Amount"],labels = data_2["Merchant Name"], autopct = "%1.1f%%")
+    #setting the title
+    plt.title("GPC_Transaction_report of 2022")
+    #saving figure as Transaction report
+    plt.savefig("Transaction report.png")
+    plt.show()
+    return #return statement is used to end tht execution of the function
 
 if __name__ == "__main__":
     #Reading a dataset value in excel form for lineplot
     data_ele = pd.read_excel("Data_Extract_FromWorld_development.xlsx")
+    #Readind a dataset value in excel form for pie chart
+    data_gpc = pd.read_excel("GPC_RATE.xlsx")
+    
     
     #calling lineplot function
     lineplot(data_ele, ["Ethiopia","Kenya", "Angola","Comoros"] )
+    #calling piechart function
+    piechart(data_gpc)
