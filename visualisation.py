@@ -46,14 +46,34 @@ def piechart(data_gpc):
     plt.show()
     return #return statement is used to end tht execution of the function
 
+"""Creating a bar chart to represent the employment in service of differnt countries"""
+
+def barchart(data_female):
+    data_3 = data_female #data_gen is stored in new variable
+    print(data_3) #printing data_3
+    plt.figure() #mentioning the size of figure
+    plt.bar(data_3["Country"],data_3["female"], label = "female")
+    #setting the title
+    plt.title("Employment to population ratio of female")
+    plt.ylabel("ratio of 2021") #labelling x-axis
+    plt.xlabel("COUNTRY") #labelling y-axis
+    #saving figure as Employment of population
+    plt.savefig("Employment of population")
+    plt.show()
+    return #return statement is used to end the execution of the function
+
 if __name__ == "__main__":
     #Reading a dataset value in excel form for lineplot
     data_ele = pd.read_excel("Data_Extract_FromWorld_development.xlsx")
     #Readind a dataset value in excel form for pie chart
     data_gpc = pd.read_excel("GPC_RATE.xlsx")
+    #Reading a dataset value in excel form for bar chart   
+    data_female = pd.read_excel("Data_Extract_FromGender_Statistics.xlsx")
     
     
     #calling lineplot function
     lineplot(data_ele, ["Ethiopia","Kenya", "Angola","Comoros"] )
     #calling piechart function
     piechart(data_gpc)
+    #calling barchart function
+    barchart(data_female)
